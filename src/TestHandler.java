@@ -1,7 +1,7 @@
 import org.xml.sax.Attributes; 
 import org.xml.sax.SAXException; 
 import org.xml.sax.helpers.DefaultHandler; 
- 
+
 public class TestHandler extends DefaultHandler { 
 int cont=1;
 	 
@@ -19,7 +19,7 @@ int cont=1;
 	         System.out.print(qName+": ");
 	 
 	        for (int i = 0; i < atts.getLength(); i++) {
-	         System.out.print(atts.getValue(i).toUpperCase()+" ");
+	         System.out.print(atts.getValue(i).toUpperCase()+" "); 
 	         bandera ++;         
 	         }
 	        if(bandera!=0){
@@ -29,7 +29,13 @@ int cont=1;
                                   	 
         
     } 
- 
 
- 
+    public void characters(char[] ch, int start, int length)
+                                  throws SAXException {
+        String text = new String(ch, start, length).trim();
+        if (!text.isEmpty()) {
+            System.out.println(text);
+        }
+    }
+
 }
